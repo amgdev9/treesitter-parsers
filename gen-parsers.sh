@@ -3,9 +3,8 @@ for dir in */; do
         echo "Generating parser in $dir"
         (cd "$dir" && tree-sitter generate)
 
-        if [[ -f "$dir/src/parser.c" ]]; then
-            mv "$dir/src/parser.c" "$dir/"
-            rm -r "$dir/src"
-        fi
+        mv "$dir/src/parser.c" "$dir/"
+        mv "$dir/src/tree_sitter" "$dir/tree_sitter"
+        rm -rf "$dir/src"
     fi
 done
